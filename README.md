@@ -1,2 +1,0 @@
-# mosaic-wiki
-Mosaic Wiki

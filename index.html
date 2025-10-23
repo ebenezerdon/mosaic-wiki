@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mosaic Wiki – Think in pages. Link everything.</title>
+  <meta name="description" content="A personal wiki with backlinks and a delightful lightweight graph. Build your second brain with [[wikilinks]].">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style type="text/tailwindcss" data-teda="tailwind-apply">
+    @layer components {
+      .btn-primary { @apply inline-flex items-center justify-center no-underline whitespace-nowrap bg-cyan-600 text-white px-4 py-2 rounded-lg shadow hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-300 active:scale-[.98] transition; }
+      .btn-secondary { @apply inline-flex items-center justify-center no-underline whitespace-nowrap bg-white border border-slate-200 text-slate-700 px-3 py-2 rounded-lg shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-cyan-100 transition; }
+      .badge { @apply inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200; }
+      .card { @apply rounded-2xl bg-white/90 backdrop-blur shadow-lg border border-slate-100 transition-transform will-change-transform; }
+      .card:hover { @apply -translate-y-0.5; }
+      .muted { @apply text-slate-500; }
+      .hero-title { @apply text-3xl md:text-5xl font-semibold tracking-tight text-slate-900; }
+      .hero-sub { @apply text-base md:text-lg text-slate-600; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-cyan-200 selection:text-slate-900">
+  <header class="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+    <nav class="flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-block h-8 w-8 rounded-lg bg-cyan-600"></span>
+        <span class="font-semibold tracking-tight">Mosaic Wiki</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="app.html" class="btn-primary">Open the App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
+    <!-- Bento hero -->
+    <section class="mt-10">
+      <div class="grid grid-cols-12 gap-4 md:gap-6">
+        <!-- Tall intro card -->
+        <div class="card col-span-12 md:col-span-7 row-span-2 p-6 md:p-8 relative overflow-hidden">
+          <span class="badge mb-3">Personal knowledge workspace</span>
+          <h1 class="hero-title">Think in pages. Link everything.</h1>
+          <p class="hero-sub mt-3 md:mt-4">Create a personal wiki with effortless [[wikilinks]], automatic backlinks, and a lightweight graph that reveals how your ideas connect.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="app.html" class="btn-primary">Start Writing</a>
+            <a href="#features" class="btn-secondary">See how it works</a>
+          </div>
+          <div class="pointer-events-none absolute -right-16 -bottom-16 -z-10 h-64 w-64 rounded-full bg-amber-100 border border-amber-200"></div>
+          <div class="pointer-events-none absolute -left-10 -top-10 -z-10 h-24 w-24 rounded-lg bg-cyan-100 border border-cyan-200 rotate-6"></div>
+        </div>
+
+        <!-- Mini demo card -->
+        <div class="card col-span-12 md:col-span-5 p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Graph preview</h3>
+            <span class="text-xs muted">lightweight</span>
+          </div>
+          <div class="mt-4 aspect-[4/3] w-full rounded-xl border border-slate-100 bg-slate-50 grid place-items-center">
+            <div class="relative h-40 w-56">
+              <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-cyan-600 shadow"></span>
+              <span class="absolute left-[10%] top-[18%] h-5 w-5 rounded-full bg-amber-500 shadow"></span>
+              <span class="absolute right-[8%] top-[22%] h-4 w-4 rounded-full bg-slate-400 shadow"></span>
+              <span class="absolute right-[12%] bottom-[22%] h-6 w-6 rounded-full bg-cyan-400 shadow"></span>
+              <span class="absolute left-[12%] bottom-[28%] h-4 w-4 rounded-full bg-slate-300 shadow"></span>
+              <svg class="absolute inset-0" width="100%" height="100%" viewBox="0 0 100 70" aria-hidden="true">
+                <line x1="50" y1="35" x2="14" y2="12" stroke="#0891b2" stroke-width="1.5" opacity="0.5" />
+                <line x1="50" y1="35" x2="88" y2="16" stroke="#0891b2" stroke-width="1.5" opacity="0.5" />
+                <line x1="50" y1="35" x2="85" y2="55" stroke="#0891b2" stroke-width="1.5" opacity="0.5" />
+                <line x1="50" y1="35" x2="18" y2="50" stroke="#0891b2" stroke-width="1.5" opacity="0.5" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-sm muted mt-3">Nodes represent pages. Tap a node in the app to open it instantly.</p>
+        </div>
+
+        <!-- Wikilinks card -->
+        <div class="card col-span-12 md:col-span-4 p-6 relative overflow-hidden">
+          <h3 class="font-semibold">Wikilinks</h3>
+          <p class="text-sm muted mt-2">Type [[Page Name]] to link ideas. Backlinks are automatic.</p>
+          <div class="absolute right-3 bottom-3 text-xs bg-slate-50 border border-slate-200 rounded-md px-2 py-1">[[Daily Notes]]</div>
+        </div>
+
+        <!-- Backlinks card -->
+        <div class="card col-span-12 md:col-span-4 p-6">
+          <h3 class="font-semibold">Backlinks</h3>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li class="flex items-center justify-between"><span>Daily Notes</span><span class="badge">2 links</span></li>
+            <li class="flex items-center justify-between"><span>Reading List</span><span class="badge">1 link</span></li>
+          </ul>
+        </div>
+
+        <!-- CTA card -->
+        <div class="card col-span-12 md:col-span-4 p-6 bg-cyan-600 text-white border-cyan-700">
+          <h3 class="font-semibold">Own your notes</h3>
+          <p class="text-sm text-cyan-100 mt-2">Everything stays in your browser with local persistence.</p>
+          <a class="btn-secondary mt-4 bg-white/90 text-slate-900 border-white" href="app.html">Open App</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature highlights (magazine style, not grid) -->
+    <section id="features" class="mt-16">
+      <div class="mb-6">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Features that keep you in flow</h2>
+        <p class="muted mt-1">Fast capture, instant linking, zero setup.</p>
+      </div>
+      <div class="columns-1 md:columns-2 gap-6 [column-fill:balance]"><!-- masonry-like -->
+        <article class="card p-6 mb-6 break-inside-avoid">
+          <h3 class="font-semibold">Live preview</h3>
+          <p class="muted mt-2">Edit on the left, preview on the right. Text transforms include headings, lists, bold, italics and [[wikilinks]].</p>
+        </article>
+        <article class="card p-6 mb-6 break-inside-avoid">
+          <h3 class="font-semibold">Backlinks overview</h3>
+          <p class="muted mt-2">See which pages reference the one you are viewing. Navigate instantly with a click.</p>
+        </article>
+        <article class="card p-6 mb-6 break-inside-avoid">
+          <h3 class="font-semibold">Keyboard driven</h3>
+          <p class="muted mt-2">Press Cmd K or Ctrl K to jump to any page or create a new one.</p>
+        </article>
+        <article class="card p-6 mb-6 break-inside-avoid">
+          <h3 class="font-semibold">Local and private</h3>
+          <p class="muted mt-2">Stored in localStorage. Your knowledge stays on your device.</p>
+        </article>
+      </div>
+      <div class="mt-8">
+        <a href="app.html" class="btn-primary">Get Started Free</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-4 sm:px-6 pb-10">
+    <div class="text-sm text-slate-500">
+      Built for writers, thinkers and tinkerers. No account required.
+    </div>
+  </footer>
+  <script src="scripts/helpers.js"></script>
+  <script src="scripts/ui.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
